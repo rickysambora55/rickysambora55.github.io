@@ -1,0 +1,14 @@
+[
+    {
+        "slug": "project-a",
+        "title": "Project A",
+        "image": "a.jpg",
+        "description": "This is Project A"
+    },
+    {
+        "slug": "project-b",
+        "title": "Project B",
+        "image": "b.jpg",
+        "description": "This is Project B"
+    }
+]
