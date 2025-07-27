@@ -1,17 +1,24 @@
-const pages = import.meta.glob("/src/views/**/*.html", {
+if (sessionStorage.redirect) {
+    const redirectTo = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    history.replaceState(null, "", redirectTo);
+}
+
+const pages = import.meta.glob("../../views/**/*.html", {
     query: "?url",
     import: "default",
 });
 
 const route = location.pathname.slice(1) || "index";
-const path = `/src/views/${route}.html`;
+const path = `../../views/${route}.html`;
 const restricted = ["partials"];
 
 const uri1 = route.split("/")[0];
+console.log("Pages:", pages, "Path:", path, "Route:", route, "URI1:", uri1);
 
 if (uri1 === "project") {
     const slug = route.split("/")[1];
-    const partialPath = "/src/views/partials/project.html";
+    const partialPath = "../../views/partials/project.html";
 
     // Check if partial exists
     if (!pages[partialPath]) {
@@ -21,7 +28,7 @@ if (uri1 === "project") {
             pages[partialPath]().then((url) =>
                 fetch(url).then((res) => res.text())
             ),
-            fetch("/src/data/projects.json").then((res) => res.json()),
+            fetch("../../data/projects.json").then((res) => res.json()),
         ])
             .then(([templateHtml, projects]) => {
                 const project = projects.find((p) => p.slug === slug);
