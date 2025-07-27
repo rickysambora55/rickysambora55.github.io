@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+            const newUrl =
+                "/" +
+                location.pathname.slice(1) +
+                location.search +
+                location.hash;
+            sessionStorage.redirect = newUrl;
+            location.replace("/");
+        </script>
+    </head>
+    <body>
+        <p>Redirecting...</p>
+    </body>
+</html>
