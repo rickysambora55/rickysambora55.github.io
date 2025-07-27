@@ -9,4 +9,12 @@
     <body class="bg-white text-gray-800">
         <div id="app" class="p-4"></div>
     </body>
+
+    <script>
+        if (sessionStorage.redirect) {
+            const redirectTo = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            history.replaceState(null, "", redirectTo);
+        }
+    </script>
 </html>
