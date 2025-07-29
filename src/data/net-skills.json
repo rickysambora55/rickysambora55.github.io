@@ -1,0 +1,7 @@
+[
+    { "name": "Routing", "img": "/img/router.svg" },
+    { "name": "Switching", "img": "/img/network.svg" },
+    { "name": "LAN Infrastructure", "img": "/img/lan.svg" },
+    { "name": "MikroTik", "img": "/img/mikrotik.svg" },
+    { "name": "Cisco", "img": "/img/cisco.svg" }
+]

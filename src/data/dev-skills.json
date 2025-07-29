@@ -1,0 +1,11 @@
+[
+    { "name": "HTML", "img": "/img/html5.svg" },
+    { "name": "CSS", "img": "/img/css3.svg" },
+    { "name": "JavaScript", "img": "/img/javascript.svg" },
+    { "name": "React.js", "img": "/img/react.svg" },
+    { "name": "Node.js", "img": "/img/nodejs.svg" },
+    { "name": "Express.js", "img": "/img/express.svg" },
+    { "name": "Tailwind CSS", "img": "/img/tailwind.svg" },
+    { "name": "Laravel", "img": "/img/laravel.svg" },
+    { "name": "MySQL", "img": "/img/mysql.svg" }
+]
