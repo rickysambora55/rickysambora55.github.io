@@ -1,12 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>Project Page</h1>
-        <div id="title"></div>
-    </body>
-</html>
+<section class="relative isolate px-8 lg:px-24 py-12 bg-white text-gray-800">
+    <div
+        aria-hidden="true"
+        class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden sm:-top-80 drop-shadow-md"
+    >
+        <div class="relative w-dvw h-116 top-40 bg-indigo-100"></div>
+    </div>
+    <div class="mx-auto container">
+        <h2 class="text-4xl font-bold mb-24">Project Info</h2>
+        <h2 id="title" class="text-3xl font-bold mb-10"></h2>
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            <!-- Title and images -->
+            <div class="flex flex-col gap-4 lg:col-span-3">
+                <div
+                    class="relative w-208 h-96 mx-auto overflow-hidden rounded-xl border-1 border-gray-900"
+                    id="carousel"
+                >
+                    <div
+                        id="images"
+                        class="flex transition-transform duration-700 ease-in-out"
+                        style="transform: translateX(0%)"
+                    ></div>
+
+                    <!-- Buttons -->
+                    <button
+                        id="prev"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 h-8 w-8 text-white/80 hover:cursor-pointer px-2 py-1 rounded-full shadow"
+                    >
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button
+                        id="next"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 h-8 w-8 text-white/80 hover:cursor-pointer px-2 py-1 rounded-full shadow"
+                    >
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+
+                    <!-- Indicators -->
+                    <div
+                        id="indicators"
+                        class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 bg-black/70 p-2 w-fit mx-auto rounded-full"
+                    ></div>
+                </div>
+            </div>
+            <!-- Tech and links -->
+            <div class="flex flex-col gap-4 md:col-span-1">
+                <h3 class="text-xl font-bold">Technologies Used</h3>
+                <div id="techs" class="flex flex-wrap gap-2"></div>
+                <h3 class="text-xl font-bold">Links</h3>
+                <div id="links" class="flex flex-wrap gap-2"></div>
+            </div>
+        </div>
+        <!-- Description -->
+        <h3 class="text-xl font-bold mt-8">Description</h3>
+        <p id="description" class="text-lg text-gray-600 mt-4 text-justify"></p>
+    </div>
+</section>
+<script>
+    const carousel = document.querySelector("#carousel > div");
+    const indicators = document.querySelectorAll("#carousel [data-index]");
+    const slides = carousel.children.length;
+    let index = 0;
+
+    function updateCarousel() {
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+        indicators.forEach((dot, i) =>
+            dot.classList.toggle("opacity-100", i === index)
+        );
+    }
+
+    document.getElementById("next").onclick = () => {
+        index = (index + 1) % slides;
+        updateCarousel();
+    };
+
+    document.getElementById("prev").onclick = () => {
+        index = (index - 1 + slides) % slides;
+        updateCarousel();
+    };
+
+    indicators.forEach((dot) =>
+        dot.addEventListener("click", () => {
+            index = Number(dot.dataset.index);
+            updateCarousel();
+        })
+    );
+
+    setInterval(() => {
+        index = (index + 1) % slides;
+        updateCarousel();
+    }, 5000);
+
+    updateCarousel();
+</script>

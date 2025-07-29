@@ -1,14 +1,96 @@
 [
     {
-        "slug": "project-a",
-        "title": "Project A",
-        "image": "a.jpg",
-        "description": "This is Project A"
+        "slug": "portfolio",
+        "title": "Portfolio Github Pages",
+        "images": [
+            "portfolio-1.png",
+            "portfolio-2.png",
+            "portfolio-3.png",
+            "portfolio-4.png"
+        ],
+        "description": "A simple single-page portfolio built using native HTML, JavaScript, and Tailwind CSS. The project is bundled with Vite for fast development and optimized deployment to GitHub Pages. While the site is statically rendered, it uses structured JSON data for modular content management such as project listings and experience entries. Ideal for showcasing personal work with minimal dependencies.",
+        "techs": ["html5", "css3", "javascript", "tailwind"],
+        "links": {
+            "live": {
+                "url": "/",
+                "label": "Website"
+            },
+            "source": {
+                "url": "https://github.com/rickysambora55/rickysambora55.github.io",
+                "label": "Source Code"
+            }
+        }
     },
     {
-        "slug": "project-b",
-        "title": "Project B",
-        "image": "b.jpg",
-        "description": "This is Project B"
+        "slug": "tomodachi",
+        "title": "Tomodachi: Job-Seeking Platform for Japan-Focused Careers",
+        "images": ["tomodachi-1.png", "tomodachi-2.png", "tomodachi-3.png"],
+        "description": "Tomodachi is a job-seeking platform for locals and internationals wanting to work in Japan. It supports multilingual job listings, regional and station-based filtering, and admin-verified posts. I built backend logic and multilingual support using CodeIgniter 3, and improved system structure by integrating reusable frontend views.",
+        "techs": ["codeigniter", "mysql"],
+        "links": {}
+    },
+    {
+        "slug": "atsuko-dashboard",
+        "title": "Atsuko Web-Admin Dashboard",
+        "images": [
+            "atsukoweb-1.png",
+            "atsukoweb-2.png",
+            "atsukoweb-3.png",
+            "atsukoweb-4.png",
+            "atsukoweb-5.png"
+        ],
+        "description": "Atsuko's web platform complements the Discord bot with advanced features for Blue Archive players. It includes a premium dashboard for power users, an interactive landing page with documentation, and web tools for student planning, raid history, and rankings. The site is designed with performance, mobile responsiveness, and user security in mind. I developed and maintain the entire frontend and backend, implemented API integration with the bot, and manage hosting, updates, and user feedback improvements.",
+        "techs": ["react", "tailwind", "vite", "express", "sequelize", "mysql"],
+        "links": {
+            "live": {
+                "url": "https://atsuko.arius.site/",
+                "label": "Website"
+            }
+        }
+    },
+    {
+        "slug": "crowd-counter",
+        "title": "Human Detection System Using Machine Learning to Calculate Crowd Potential",
+        "images": [
+            "crowd-1.png",
+            "crowd-2.png",
+            "crowd-3.png",
+            "crowd-4.png",
+            "crowd-5.png"
+        ],
+        "description": "Developed a real-time crowd monitoring system using YOLOv8 and Flask, optimized for edge computing on the Jetson Nano. The system detects individuals and estimates crowd density through CNN-based inference to mitigate overcrowding risks. Achieved 0.965 average precision with an inference time of 283.73 ms. Includes a live web dashboard for real-time visualization. Served as lead developer, responsible for AI inference pipeline, YOLOv8 integration, Flask-based streaming, and Jetson Nano deployment. Also handled dataset curation and preprocessing for training and evaluation.",
+        "techs": ["python", "flask", "yolov8", "jetson"],
+        "links": {
+            "paper": {
+                "url": "https://doi.org/10.18517/ijaseit.15.1.20327",
+                "label": "Paper"
+            },
+            "dataset": {
+                "url": "https://universe.roboflow.com/ricky-sambora/crowd-detection-7suou/",
+                "label": "Dataset"
+            },
+            "source": {
+                "url": "https://github.com/rickysambora55/yolov8-jetson",
+                "label": "Source Code"
+            }
+        }
+    },
+    {
+        "slug": "atsuko-bot",
+        "title": "Atsuko Discord Bot",
+        "images": [
+            "atsukobot-1.png",
+            "atsukobot-2.png",
+            "atsukobot-3.png",
+            "atsukobot-4.png"
+        ],
+        "description": "Atsuko is a full-featured Discord bot designed for Blue Archive communities. It includes tools for club and raid management, character database access, and game-related utilities. Key features include: club and raid tools to manage clubs and calculate scores, a searchable student database with stats and filters, game info like raid bosses and gear farming, a ranking system to export performance data, and personal student lists for roster planning. I built and maintain all bot features, backend logic, and APIs myself, along with ongoing updates and hosting management.",
+        "techs": ["nodejs", "discord.js", "sequelize", "mysql"],
+        "links": {
+            "live": {
+                "url": "https://atsuko.arius.site/invite",
+                "label": "Invite Bot"
+            }
+        }
     }
 ]
