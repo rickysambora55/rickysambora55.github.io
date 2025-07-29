@@ -45,7 +45,7 @@ function navDecision(headerHtml) {
         const parser = new DOMParser();
         const doc = parser.parseFromString(headerHtml, "text/html");
         const navList = doc.querySelector("#desktop-menu");
-        const navListMobile = doc.querySelector("#mobile-menu");
+        const navListMobile = doc.querySelector("#mobile-menu-nav");
 
         if (navList) {
             navList.innerHTML = "";
