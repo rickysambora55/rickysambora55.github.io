@@ -1,8 +1,20 @@
-import educations from "../../data/educations.json";
-import experiences from "../../data/experiences.json";
-import netSkills from "../../data/net-skills.json";
-import devSkills from "../../data/dev-skills.json";
-import projects from "../../data/projects.json";
+import educationsUrl from "/data/educations.json?url";
+import experiencesUrl from "/data/experiences.json?url";
+import netSkillsUrl from "/data/net-skills.json?url";
+import devSkillsUrl from "/data/dev-skills.json?url";
+import projectsUrl from "/data/projects.json?url";
+
+async function loadJson(url) {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Failed to fetch: " + url);
+    return res.json();
+}
+
+const educations = await loadJson(educationsUrl);
+const experiences = await loadJson(experiencesUrl);
+const netSkills = await loadJson(netSkillsUrl);
+const devSkills = await loadJson(devSkillsUrl);
+const projects = await loadJson(projectsUrl);
 
 async function renderSkills(skills, container) {
     if (!container) return;
