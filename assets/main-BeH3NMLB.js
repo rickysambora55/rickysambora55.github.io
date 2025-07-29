@@ -1,13 +1,9 @@
-import educationsUrl from "/data/educations.json?url";
-import experiencesUrl from "/data/experiences.json?url";
-import netSkillsUrl from "/data/net-skills.json?url";
-import devSkillsUrl from "/data/dev-skills.json?url";
-import projectsUrl from "/data/projects.json?url";
-
 async function loadJson(url) {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Failed to fetch: " + url);
-    return res.json();
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Failed to fetch ${url}: ${response.status}`);
+    }
+    return await response.json();
 }
 
 async function renderSkills(skills, container) {
@@ -180,11 +176,11 @@ async function renderProjectsFull(projects) {
 }
 
 async function init() {
-    const educations = await loadJson(educationsUrl);
-    const experiences = await loadJson(experiencesUrl);
-    const netSkills = await loadJson(netSkillsUrl);
-    const devSkills = await loadJson(devSkillsUrl);
-    const projects = await loadJson(projectsUrl);
+    const educations = await loadJson("/data/educations.json");
+    const experiences = await loadJson("/data/experiences.json");
+    const netSkills = await loadJson("/data/net-skills.json");
+    const devSkills = await loadJson("/data/dev-skills.json");
+    const projects = await loadJson("/data/projects.json");
 
     renderSkills(devSkills, document.getElementById("dev-skills-grid"));
     renderSkills(netSkills, document.getElementById("net-skills-grid"));
