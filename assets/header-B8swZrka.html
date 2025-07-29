@@ -1,0 +1,165 @@
+<header
+    id="navbar"
+    class="inset-x-0 top-0 z-50 sticky transition-colors duration-300"
+>
+    <nav
+        aria-label="Global"
+        class="flex items-center justify-end p-6 lg:px-8 mx-auto container"
+    >
+        <div class="flex lg:hidden">
+            <button
+                type="button"
+                command="show-modal"
+                commandfor="mobile-menu"
+                class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            >
+                <span class="sr-only">Open main menu</span>
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    data-slot="icon"
+                    aria-hidden="true"
+                    class="size-6"
+                >
+                    <path
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </button>
+        </div>
+        <div id="desktop-menu" class="hidden lg:flex lg:gap-x-12">
+            <a
+                href="#home"
+                class="text-md/6 hover:text-pink-300 font-semibold text-gray-900 transition-colors duration-150"
+                >Home</a
+            >
+            <a
+                href="#resume"
+                class="text-md/6 hover:text-pink-300 font-semibold text-gray-900 transition-colors duration-150"
+                >Resume</a
+            >
+            <a
+                href="#skills"
+                class="text-md/6 hover:text-pink-300 font-semibold text-gray-900 transition-colors duration-150"
+                >Skills</a
+            >
+            <a
+                href="#projects"
+                class="text-md/6 hover:text-pink-300 font-semibold text-gray-900 transition-colors duration-150"
+                >Projects</a
+            >
+            <a
+                href="#contact"
+                class="text-md/6 hover:text-pink-300 font-semibold text-gray-900 transition-colors duration-150"
+                >Contact</a
+            >
+        </div>
+    </nav>
+    <el-dialog>
+        <dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden">
+            <div tabindex="0" class="fixed inset-0 focus:outline-none">
+                <el-dialog-panel
+                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+                >
+                    <div class="flex items-center justify-end">
+                        <button
+                            type="button"
+                            command="close"
+                            commandfor="mobile-menu"
+                            class="-m-2.5 rounded-md p-2.5 text-gray-700"
+                        >
+                            <span class="sr-only">Close menu</span>
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                data-slot="icon"
+                                aria-hidden="true"
+                                class="size-6"
+                            >
+                                <path
+                                    d="M6 18 18 6M6 6l12 12"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="mt-6 flow-root">
+                        <div class="-my-6 divide-y divide-gray-500/10">
+                            <div id="mobile-menu" class="space-y-2 py-6">
+                                <a
+                                    href="#home"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                                    >Home</a
+                                >
+                                <a
+                                    href="#resume"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                                    >Resume</a
+                                >
+                                <a
+                                    href="#skills"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                                    >Skills</a
+                                >
+                                <a
+                                    href="#projects"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                                    >Projects</a
+                                >
+                                <a
+                                    href="#contact"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                                    >Contact</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </el-dialog-panel>
+            </div>
+        </dialog>
+    </el-dialog>
+
+    <script>
+        // Navbar
+        const navbar = document.getElementById("navbar");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 90) {
+                navbar.classList.add("bg-indigo-50/70", "backdrop-blur-lg");
+            } else {
+                navbar.classList.remove("bg-indigo-50/70", "backdrop-blur-lg");
+            }
+        });
+
+        navLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                navbar.classList.remove("bg-indigo-50/70", "backdrop-blur-lg");
+            });
+        });
+
+        // Smooth transition
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                const target = document.querySelector(
+                    this.getAttribute("href")
+                );
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 75,
+                        behavior: "smooth",
+                    });
+                }
+            });
+        });
+    </script>
+</header>
