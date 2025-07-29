@@ -1,4 +1,14 @@
-import projects from "../../data/projects.json";
+import mainScriptUrl from "/src/assets/js/main.js?url";
+
+async function loadJson(url) {
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Failed to fetch ${url}: ${response.status}`);
+    }
+    return await response.json();
+}
+
+const projects = await loadJson("/data/projects.json");
 
 // Get the current route from direct link access and force to route to root
 if (sessionStorage.redirect) {
@@ -58,6 +68,14 @@ function navDecision(headerHtml) {
         return updatedHeaderHtml;
     }
     return headerHtml;
+}
+
+// Inject script
+function injectScript(scriptUrl) {
+    const script = document.createElement("script");
+    script.type = "module";
+    script.src = scriptUrl;
+    document.body.appendChild(script);
 }
 
 const pages = import.meta.glob("../../views/**/*.html", {
@@ -214,6 +232,7 @@ if (uri1 === "project") {
                 const headerNew = navDecision(headerHtml);
                 app.innerHTML =
                     headerNew + tempContainer.innerHTML + footerHtml;
+                injectScript(mainScriptUrl);
                 executeScripts(app);
             })
             .catch((err) => {
@@ -240,6 +259,7 @@ if (uri1 === "project") {
         .then(([headerHtml, pageHtml, footerHtml]) => {
             const headerNew = navDecision(headerHtml);
             app.innerHTML = headerNew + pageHtml + footerHtml;
+            injectScript(mainScriptUrl);
             executeScripts(app);
         })
         .catch((err) => {

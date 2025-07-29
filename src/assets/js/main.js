@@ -1,8 +1,10 @@
-import educations from "../../data/educations.json";
-import experiences from "../../data/experiences.json";
-import netSkills from "../../data/net-skills.json";
-import devSkills from "../../data/dev-skills.json";
-import projects from "../../data/projects.json";
+async function loadJson(url) {
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Failed to fetch ${url}: ${response.status}`);
+    }
+    return await response.json();
+}
 
 async function renderSkills(skills, container) {
     if (!container) return;
@@ -22,7 +24,7 @@ async function renderSkills(skills, container) {
     });
 }
 
-async function renderEducations() {
+async function renderEducations(educations) {
     const container = document.getElementById("education-list");
     if (!container) return;
     educations.forEach((item) => {
@@ -44,7 +46,7 @@ async function renderEducations() {
     });
 }
 
-async function renderWorkExperiences() {
+async function renderWorkExperiences(experiences) {
     const container = document.getElementById("work-experience-list");
     if (!container) return;
     experiences.forEach((exp) => {
@@ -62,7 +64,7 @@ async function renderWorkExperiences() {
     });
 }
 
-async function renderProjects() {
+async function renderProjects(projects) {
     const container = document.getElementById("project-list");
     if (!container) return;
     container.innerHTML = "";
@@ -118,7 +120,7 @@ async function renderProjects() {
     });
 }
 
-async function renderProjectsFull() {
+async function renderProjectsFull(projects) {
     const container = document.getElementById("project-full");
     if (!container) return;
     container.innerHTML = "";
@@ -173,9 +175,18 @@ async function renderProjectsFull() {
     });
 }
 
-renderSkills(devSkills, document.getElementById("dev-skills-grid"));
-renderSkills(netSkills, document.getElementById("net-skills-grid"));
-renderEducations();
-renderWorkExperiences();
-renderProjects();
-renderProjectsFull();
+async function init() {
+    const educations = await loadJson("/data/educations.json");
+    const experiences = await loadJson("/data/experiences.json");
+    const netSkills = await loadJson("/data/net-skills.json");
+    const devSkills = await loadJson("/data/dev-skills.json");
+    const projects = await loadJson("/data/projects.json");
+
+    renderSkills(devSkills, document.getElementById("dev-skills-grid"));
+    renderSkills(netSkills, document.getElementById("net-skills-grid"));
+    renderEducations(educations);
+    renderWorkExperiences(experiences);
+    renderProjects(projects);
+    renderProjectsFull(projects);
+}
+init().catch(console.error);
