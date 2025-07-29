@@ -193,3 +193,4 @@ async function init() {
     renderProjects(projects);
     renderProjectsFull(projects);
 }
+init().catch(console.error);
