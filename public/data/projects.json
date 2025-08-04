@@ -49,6 +49,27 @@
         }
     },
     {
+        "slug": "portfolio-laravel",
+        "title": "Portfolio CRUD Laravel",
+        "images": [
+            "portfolio-laravel-1.png",
+            "portfolio-laravel-2.png",
+            "portfolio-laravel-3.png",
+            "portfolio-laravel-4.png",
+            "portfolio-laravel-5.png",
+            "portfolio-laravel-6.png",
+            "portfolio-laravel-7.png"
+        ],
+        "description": "A portfolio built using Laravel, a PHP framework, and Tailwind CSS for styling. This project showcases my skills in backend development, database management, and frontend design. It features a CRUD (Create, Read, Update, Delete) system for managing projects and experiences, with a responsive design that adapts to various screen sizes. The project uses a SQlite database for storing data.",
+        "techs": ["php", "laravel", "sqlite", "tailwind"],
+        "links": {
+            "source": {
+                "url": "https://github.com/rickysambora55/portfolio-crud-laravel",
+                "label": "Source Code"
+            }
+        }
+    },
+    {
         "slug": "crowd-counter",
         "title": "Human Detection System Using Machine Learning to Calculate Crowd Potential",
         "images": [
